@@ -12,8 +12,8 @@ Should be added README.md file with discription how to run your framework
 
 Test case #1 (Subscribe with invalid email)
 Go to the https://demo.prestashop.com/
-On the buttom of the page check that text near the email field equals 'Get our latest news and special sales'
-On the buttom of the page check that text under email field contains 'You may unsubscribe at any moment. For that purpose, please find my contact info in the legal notice.'
+On the button of the page check that text near the email field equals 'Get our latest news and special sales'
+On the button of the page check that text under email field contains 'You may unsubscribe at any moment. For that purpose, please find my contact info in the legal notice.'
 Check that all characters on 'SUBSCRIBE' button in upper case
 
 
@@ -21,16 +21,16 @@ Test case #2 (Check languages)
 Go to the https://demo.prestashop.com/
 Check that 44 langueges exists in 'Language' dropdown in the top menu
 Check that 'Українська' language exist in dropdown
-Test case #3 (Registration with valid data)
 
+Test case #3 (Registration with valid data)
 Go to the https://demo.prestashop.com/
 Click on 'Sign in' button at the right corner of the page
 Click on 'No account? Create one here' link
 Fill the form with valid data
 Click on 'Save' button
 Check your name appear near cart button
-Test case #4 (Registration with invalid data)
 
+Test case #4 (Registration with invalid data)
 Go to the https://demo.prestashop.com/
 Click on 'Sign in' button at the right corner of the page
 Click on 'No account? Create one here' link

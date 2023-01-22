@@ -9,7 +9,6 @@ import pages.BasePage;
 
 public class BaseTest {
 
-
   @BeforeMethod
   public void setUp() {
     WebDriverManager.chromedriver().setup();

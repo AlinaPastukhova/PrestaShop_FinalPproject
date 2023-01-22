@@ -3,10 +3,10 @@ import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
-public class EmailFieldTest extends BaseTest {
+public class NewsLetterLabelTest extends BaseTest {
 
   @Test
-  public void checkInformationNearTheEmailFieldTest() {
+  public void checkInformationNearTheNewsLetterLabelTest() {
 
     MainPage mainPage = new MainPage();
     SoftAssertions softAssertions = new SoftAssertions();
@@ -19,6 +19,7 @@ public class EmailFieldTest extends BaseTest {
     // On the button of the page check that text near the email field equals 'Get our latest news and special sales'
     String actualTextNearTheEmailField = mainPage
         .openMainPage()
+        .getNewsLetterLabelBlock()
         .getTextNearTheEmailField();
 
     softAssertions.assertThat(actualTextNearTheEmailField)
@@ -30,6 +31,7 @@ public class EmailFieldTest extends BaseTest {
     // 'You may unsubscribe at any moment. For that purpose, please find my contact info in the legal notice.'
     String actualTextUnderTheEmailField = mainPage
         .openMainPage()
+        .getNewsLetterLabelBlock()
         .getTextUnderTheEmailField();
 
     softAssertions.assertThat(actualTextUnderTheEmailField)
@@ -40,6 +42,7 @@ public class EmailFieldTest extends BaseTest {
     // Check that all characters on 'SUBSCRIBE' button in upper case
     String actualCaseOnSubscribeButton = mainPage
         .openMainPage()
+        .getNewsLetterLabelBlock()
         .getRegisterOnSubscribeButton();
 
     softAssertions.assertThat(actualCaseOnSubscribeButton)

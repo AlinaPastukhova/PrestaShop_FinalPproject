@@ -1,5 +1,7 @@
 package pages;
 
+import blocks.NewsLetterLabelBlock;
+import blocks.TopMenuBlock;
 import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,8 +22,29 @@ public class BasePage {
     driver = webDriver;
   }
 
-  public WebElement find(By locator) {
+  private NewsLetterLabelBlock newsLetterLabelBlock = new NewsLetterLabelBlock(getDriver());
+  private TopMenuBlock topMenuBlock = new TopMenuBlock(getDriver());
+
+  public NewsLetterLabelBlock getNewsLetterLabelBlock() {
+    return newsLetterLabelBlock;
+  }
+
+  public TopMenuBlock getTopMenuBlock() {
+    return topMenuBlock;
+  }
+
+  public static WebElement find(By locator) {
     return getDriver().findElement(locator);
+  }
+
+  public static void scrollToElement(WebDriver driver, By element) {
+    ((JavascriptExecutor) driver)
+        .executeScript("arguments[0].scrollIntoView(true);", driver.findElement(element));
+  }
+
+  public static WebElement waitUntilVisible(By locator, int second) {
+    return new WebDriverWait(driver, Duration.ofSeconds(second))
+        .until(ExpectedConditions.visibilityOfElementLocated(locator));
   }
 
   public static boolean waitUntilInvisible(By locator, int second) {
@@ -29,14 +52,9 @@ public class BasePage {
         .until(ExpectedConditions.invisibilityOfElementLocated(locator));
   }
 
-  protected static void scrollToElement(WebDriver driver, By element) {
-    ((JavascriptExecutor) driver)
-        .executeScript("arguments[0].scrollIntoView(true);", driver.findElement(element));
-  }
-
-  protected WebElement waitUntilVisible(By locator, int second) {
+  public static WebElement waitUntilToBeClickable(By locator, int second) {
     return new WebDriverWait(driver, Duration.ofSeconds(second))
-        .until(ExpectedConditions.visibilityOfElementLocated(locator));
+        .until(ExpectedConditions.elementToBeClickable(locator));
   }
 
 }

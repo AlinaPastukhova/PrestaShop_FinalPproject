@@ -57,4 +57,9 @@ public class BasePage {
         .until(ExpectedConditions.elementToBeClickable(locator));
   }
 
+  public static WebElement waitUntilPresents(By locator, int second) {
+    return new WebDriverWait(driver, Duration.ofSeconds(second))
+        .until(ExpectedConditions.presenceOfElementLocated(locator));
+  }
+
 }

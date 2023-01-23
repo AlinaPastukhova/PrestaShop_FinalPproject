@@ -51,6 +51,5 @@ public class NewsLetterLabelTest extends BaseTest {
         .isEqualTo(expectedRegisterOnSubscribeButton);
 
     softAssertions.assertAll();
-
   }
 }

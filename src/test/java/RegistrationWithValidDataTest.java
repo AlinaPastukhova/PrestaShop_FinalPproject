@@ -6,6 +6,7 @@ import pages.MainPage;
 public class RegistrationWithValidDataTest extends BaseTest {
 
   Faker faker = new Faker();
+
   String firstName = faker.name().firstName();
   String lastName = faker.name().lastName();
   String email = faker.internet().emailAddress();
@@ -20,7 +21,6 @@ public class RegistrationWithValidDataTest extends BaseTest {
 
     String expectedUserName = firstName + " " + lastName;
 
-//    Check your name appear near cart button
     String actualUserName = mainPage
         .openMainPage()
         .getTopMenuBlock()
@@ -39,11 +39,11 @@ public class RegistrationWithValidDataTest extends BaseTest {
         .clickSubmitButton()
         .getUserName();
 
+    // Check your name appear near cart button
     softAssertions.assertThat(actualUserName)
         .as("Expected Name " + expectedUserName + " after registration account")
         .isEqualTo(actualUserName);
 
     softAssertions.assertAll();
-
   }
 }

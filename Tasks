@@ -19,7 +19,7 @@ Check that all characters on 'SUBSCRIBE' button in upper case
 
 Test case #2 (Check languages)
 Go to the https://demo.prestashop.com/
-Check that 44 langueges exists in 'Language' dropdown in the top menu
+Check that 44 languages exists in 'Language' dropdown in the top menu
 Check that 'Українська' language exist in dropdown
 
 Test case #3 (Registration with valid data)
@@ -36,10 +36,10 @@ Click on 'Sign in' button at the right corner of the page
 Click on 'No account? Create one here' link
 Fill 'First name' field with 'James8'
 Fill the rest fields valid data
-Check that 'First name' higlighted in red
+Check that 'First name' highlighted in red
 Check that pop-up with text 'Invalid name' appear under field
-Test case #5 (Check categories)
 
+Test case #5 (Check categories)
 Go to the https://demo.prestashop.com/
 Hover mouse over 'CLOTHES'
 Check that 'MEN' and 'WOMEN' sub menu items appears

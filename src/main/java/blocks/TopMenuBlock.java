@@ -1,5 +1,6 @@
 package blocks;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,9 +19,8 @@ public class TopMenuBlock {
   // Language Button
   private final By languageSelectorButton = By.xpath(
       "//div[@class='language-selector dropdown js-dropdown']//button");
-  private final By languagesSelectDropdown = By.xpath(
+  private final By languagesContainer = By.xpath(
       "//ul[@class='dropdown-menu hidden-sm-down']/li");
-  private final By languageNameInSelectDropdown = By.xpath("//a[text()='Українська']");
 
   // Sign in Button
   private final By signInButton = By.xpath("//span[text()='Sign in']");
@@ -32,22 +32,17 @@ public class TopMenuBlock {
     return this;
   }
 
-  public int getSizeLanguageSelectDropdown() {
-    BasePage.waitUntilVisible(languagesSelectDropdown, 10);
-    List<WebElement> dropDown = driver.findElements(languagesSelectDropdown);
-    int size = dropDown.size();
-    return size;
+  public List<String> getNamesOfLanguages() {
+    List<String> namesOfLanguages = new ArrayList<>();
+    List<WebElement> elements = driver.findElements(languagesContainer);
+    for (WebElement element : elements) {
+      String names = element.getText();
+      namesOfLanguages.add(names);
+    }
+    return namesOfLanguages;
   }
 
-  public String getLanguageInDropDown() {
-    BasePage.waitUntilVisible(languagesSelectDropdown, 10);
-    BasePage.scrollToElement(driver, languageNameInSelectDropdown);
-    WebElement dropDown = driver.findElement(languageNameInSelectDropdown);
-    String name = dropDown.getText();
-    return name;
-  }
-
-  public LogAccountPage clickSignInButton(){
+  public LogAccountPage clickSignInButton() {
     BasePage.waitUntilVisible(signInButton, 10);
     driver.findElement(signInButton).click();
     return new LogAccountPage();

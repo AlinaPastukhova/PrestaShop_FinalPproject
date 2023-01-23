@@ -3,6 +3,7 @@ package pages;
 import blocks.NewsLetterLabelBlock;
 import blocks.TopMenuBlock;
 import java.time.Duration;
+import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@Data
 public class BasePage {
 
   protected static WebDriver driver;
@@ -24,14 +26,6 @@ public class BasePage {
 
   private NewsLetterLabelBlock newsLetterLabelBlock = new NewsLetterLabelBlock(getDriver());
   private TopMenuBlock topMenuBlock = new TopMenuBlock(getDriver());
-
-  public NewsLetterLabelBlock getNewsLetterLabelBlock() {
-    return newsLetterLabelBlock;
-  }
-
-  public TopMenuBlock getTopMenuBlock() {
-    return topMenuBlock;
-  }
 
   public static WebElement find(By locator) {
     return getDriver().findElement(locator);
@@ -61,5 +55,18 @@ public class BasePage {
     return new WebDriverWait(driver, Duration.ofSeconds(second))
         .until(ExpectedConditions.presenceOfElementLocated(locator));
   }
+
+  public static boolean waitRefreshed(By locator, int second) {
+    return new WebDriverWait(driver, Duration.ofSeconds(second))
+        .until(ExpectedConditions.refreshed(
+            ExpectedConditions.stalenessOf(driver.findElement(locator))));
+  }
+
+  public static WebElement waitRefreshedUntilPresents(By locator, int second) {
+    return new WebDriverWait(driver, Duration.ofSeconds(second))
+        .until(ExpectedConditions.refreshed(
+            ExpectedConditions.presenceOfElementLocated(locator)));
+  }
+
 
 }

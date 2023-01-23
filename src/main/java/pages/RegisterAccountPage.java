@@ -1,6 +1,9 @@
 package pages;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class RegisterAccountPage extends BasePage {
 
@@ -16,17 +19,17 @@ public class RegisterAccountPage extends BasePage {
   private final By newsLetterCheckBox = By.xpath("//input[@name='newsletter']");
   private final By privacyPolicyCheckBox = By.xpath("//input[@name='psgdpr']");
   private final By submitButton = By.xpath("//button[@type='submit']");
-
+  private final By invalidMessage = By.xpath("//li[@class='alert alert-danger']");
 
 
   public RegisterAccountPage clickMrsSocialTitleButton() {
-    BasePage.waitUntilPresents(mrsSocialTitleButton, 10);
-    BasePage.find(mrsSocialTitleButton).click();
+    waitUntilPresents(mrsSocialTitleButton, 10);
+    find(mrsSocialTitleButton).click();
     return this;
   }
 
-    public RegisterAccountPage inputFirstNameField(String firstName) {
-    BasePage.scrollToElement(driver, firstNameField);
+  public RegisterAccountPage inputFirstNameField(String firstName) {
+    scrollToElement(driver, firstNameField);
     find(firstNameField).sendKeys(firstName);
     return this;
   }
@@ -52,31 +55,49 @@ public class RegisterAccountPage extends BasePage {
   }
 
   public RegisterAccountPage clickOffersCheckBox() {
-    BasePage.find(offersCheckBox).click();
+    find(offersCheckBox).click();
     return this;
   }
 
   public RegisterAccountPage clickCustomerPrivacyCheckBox() {
-    BasePage.find(customerPrivacyCheckBox).click();
+    find(customerPrivacyCheckBox).click();
     return this;
   }
 
   public RegisterAccountPage clickNewsLetterCheckBox() {
-    BasePage.find(newsLetterCheckBox).click();
+    find(newsLetterCheckBox).click();
     return this;
   }
 
   public RegisterAccountPage clickPrivacyPolicyCheckBox() {
-    BasePage.find(privacyPolicyCheckBox).click();
+    find(privacyPolicyCheckBox).click();
     return this;
   }
 
   public UserAccountPage clickSubmitButton() {
-    BasePage.find(submitButton).click();
+    find(submitButton).click();
     return new UserAccountPage();
   }
 
+  public RegisterAccountPage clickWithErrorSubmitButton() {
+    find(submitButton).click();
+    return this;
+  }
 
+  public String highlightedColorWhenError() {
+    waitRefreshed(firstNameField, 10);
+    waitUntilPresents(firstNameField, 10);
+    String highlighted = find(firstNameField).getCssValue("outline-color");
+    return highlighted;
+  }
 
-
+  public List<String> getTextUnderErrorField() {
+    List<String> errorText = new ArrayList<>();
+    List<WebElement> elements = driver.findElements(invalidMessage);
+    for (WebElement element : elements) {
+      String text = element.getText();
+      errorText.add(text);
+    }
+    return errorText;
+  }
 }

@@ -19,7 +19,7 @@ public class RegisterAccountPage extends BasePage {
   private final By newsLetterCheckBox = By.xpath("//input[@name='newsletter']");
   private final By privacyPolicyCheckBox = By.xpath("//input[@name='psgdpr']");
   private final By submitButton = By.xpath("//button[@type='submit']");
-  private final By invalidMessage = By.xpath("//li[@class='alert alert-danger']");
+  private final By errorMessage = By.xpath("//li[@class='alert alert-danger']");
 
 
   public RegisterAccountPage clickMrsSocialTitleButton() {
@@ -79,21 +79,21 @@ public class RegisterAccountPage extends BasePage {
     return new UserAccountPage();
   }
 
-  public RegisterAccountPage clickWithErrorSubmitButton() {
+  public RegisterAccountPage clickSubmitButtonWithError() {
     find(submitButton).click();
     return this;
   }
 
-  public String highlightedColorWhenError() {
+  public String getHighlightedColorWhenError() {
     waitRefreshed(firstNameField, 10);
     waitUntilPresents(firstNameField, 10);
     String highlighted = find(firstNameField).getCssValue("outline-color");
     return highlighted;
   }
 
-  public List<String> getTextUnderErrorField() {
+  public List<String> getTextUnderFieldWithError() {
     List<String> errorText = new ArrayList<>();
-    List<WebElement> elements = driver.findElements(invalidMessage);
+    List<WebElement> elements = driver.findElements(errorMessage);
     for (WebElement element : elements) {
       String text = element.getText();
       errorText.add(text);

@@ -47,8 +47,8 @@ Hover mouse over 'ACCESSORIES'
 Check that 'STATIONERY' and 'HOME ACCESSORIES' sub menu items appears
 Hover mouse over 'ART'
 Check that no any sub category appears
-Test case #6 (Check popular products)
 
+Test case #6 (Check popular products)
 Go to the https://demo.prestashop.com/
 Check that 8 products exist in 'POPULAR PRODUCTS' section
 Check that every product has name

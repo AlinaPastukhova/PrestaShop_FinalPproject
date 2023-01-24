@@ -20,6 +20,7 @@ public class RegistrationWithInvalidDataTest extends BaseTest {
 
     MainPage mainPage = new MainPage();
     SoftAssertions softAssertions = new SoftAssertions();
+    RegisterAccountPage registerAccountPage = new RegisterAccountPage();
 
     // "rgba(255, 76, 76, 1)" = red color
     String expectedHighlightedWhenError = "rgba(255, 76, 76, 1)";
@@ -40,20 +41,18 @@ public class RegistrationWithInvalidDataTest extends BaseTest {
         .clickCustomerPrivacyCheckBox()
         .clickNewsLetterCheckBox()
         .clickPrivacyPolicyCheckBox()
-        .clickWithErrorSubmitButton();
-
-    RegisterAccountPage registerAccountPage = new RegisterAccountPage();
-
-    String actualHighlightedWhenError = registerAccountPage.highlightedColorWhenError();
+        .clickSubmitButtonWithError();
 
     // Check that 'First name' highlighted in red
+    String actualHighlightedWhenError = registerAccountPage.getHighlightedColorWhenError();
+
     softAssertions.assertThat(actualHighlightedWhenError)
         .as("Expected that 'First name' highlighted in " + expectedHighlightedWhenError
             + " when error in the field")
         .isEqualTo(expectedHighlightedWhenError);
 
     // Check that pop-up with text 'Invalid name' appear under field
-    List<String> actualTextUnderErrorField = registerAccountPage.getTextUnderErrorField();
+    List<String> actualTextUnderErrorField = registerAccountPage.getTextUnderFieldWithError();
 
     softAssertions.assertThat(actualTextUnderErrorField)
         .as("Expected text under error field " + expectedTextUnderErrorField)

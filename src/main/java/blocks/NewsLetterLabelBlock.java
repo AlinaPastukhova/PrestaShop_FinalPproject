@@ -30,7 +30,7 @@ public class NewsLetterLabelBlock {
     return text;
   }
 
-  public String getRegisterOnSubscribeButton() {
+  public String getAttributeOnSubscribeButton() {
     BasePage.waitUntilVisible(newsletterLabel, 10);
     BasePage.scrollToElement(driver, newsletterLabel);
     String characters = driver.findElement(subscribeButton).getCssValue("text-transform");

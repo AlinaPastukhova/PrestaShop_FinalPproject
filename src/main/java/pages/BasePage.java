@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 @Data
-public class BasePage {
+public abstract class BasePage {
 
   protected static WebDriver driver;
   protected static Actions actions;
@@ -28,6 +28,10 @@ public class BasePage {
 
   public static void setDriver(WebDriver webDriver) {
     driver = webDriver;
+  }
+
+  public BasePage(){
+    actions = new Actions(getDriver());
   }
 
   private NewsLetterLabelBlock newsLetterLabelBlock = new NewsLetterLabelBlock(getDriver());
@@ -76,6 +80,7 @@ public class BasePage {
   }
 
   public static void hoverToButton(By locator) {
+    waitUntilPresents(locator, 10);
     WebElement element = find(locator);
     actions.moveToElement(element).build().perform();
   }

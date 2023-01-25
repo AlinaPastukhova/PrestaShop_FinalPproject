@@ -14,7 +14,7 @@ public class NewsLetterLabelTest extends BaseTest {
     String expectedTextNearTheEmailField = "Get our latest news and special sales";
     String expectedTextUnderTheEmailField = "You may unsubscribe at any moment. For that purpose,"
         + " please find my contact info in the legal notice.";
-    String expectedRegisterOnSubscribeButton = "uppercase";
+    String expectedAttributeOnSubscribeButton = "uppercase";
 
     // On the button of the page check that text near the email field equals 'Get our latest news and special sales'
     String actualTextNearTheEmailField = mainPage
@@ -40,15 +40,15 @@ public class NewsLetterLabelTest extends BaseTest {
         .isEqualTo(expectedTextUnderTheEmailField);
 
     // Check that all characters on 'SUBSCRIBE' button in upper case
-    String actualCaseOnSubscribeButton = mainPage
+    String actualAttributeOnSubscribeButton = mainPage
         .openMainPage()
         .getNewsLetterLabelBlock()
-        .getRegisterOnSubscribeButton();
+        .getAttributeOnSubscribeButton();
 
-    softAssertions.assertThat(actualCaseOnSubscribeButton)
+    softAssertions.assertThat(actualAttributeOnSubscribeButton)
         .as("All characters on 'SUBSCRIBE' button must be in upper case "
-            + expectedRegisterOnSubscribeButton)
-        .isEqualTo(expectedRegisterOnSubscribeButton);
+            + expectedAttributeOnSubscribeButton)
+        .isEqualTo(expectedAttributeOnSubscribeButton);
 
     softAssertions.assertAll();
   }

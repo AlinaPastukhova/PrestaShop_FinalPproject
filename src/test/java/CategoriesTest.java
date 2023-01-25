@@ -1,3 +1,4 @@
+import blocks.MainMenuBlock.MainMenuCategories;
 import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
@@ -11,40 +12,53 @@ public class CategoriesTest extends BaseTest {
     MainPage mainPage = new MainPage();
     SoftAssertions softAssertions = new SoftAssertions();
 
-    String expectedNameOfMenDropdownSubMenu = "MEN";
-    String expectedNameOfWomenDropdownSubMenu = "WOMEN";
-    String expectedNameOfStationeryDropdownSubMenu = "STATIONERY";
-    String expectedNameOfHomeAccessoriesDropdownSubMenu = "HOME ACCESSORIES";
+    String expectedNameOfMenDropdown = "MEN";
+    String expectedNameOfWomenDropdown = "WOMEN";
+    String expectedNameOfStationeryDropdown = "STATIONERY";
+    String expectedNameOfHomeAccessoriesDropdown = "HOME ACCESSORIES";
+    int expectedSizeCategoriesOfArtSubMenu = 0;
 
-    List<String> actualNamesClothesSubMenu = mainPage
+    List<String> actualNamesCategoriesClothesSubMenu = mainPage
         .openMainPage()
         .getMainMenuBlock()
-        .hoverToClothesButton()
+        .hoverToMainManuButton(MainMenuCategories.CLOTHES)
         .getNameOfClothesSubMenu();
 
     // Check that 'MEN' and 'WOMEN' sub menu items appears
-    softAssertions.assertThat(actualNamesClothesSubMenu)
+    softAssertions.assertThat(actualNamesCategoriesClothesSubMenu)
         .as("We expected categories "
-            + expectedNameOfMenDropdownSubMenu
-            + expectedNameOfWomenDropdownSubMenu
-            + " of Clothes dropdown SubMenu")
-        .contains(expectedNameOfMenDropdownSubMenu,
-            expectedNameOfWomenDropdownSubMenu);
+            + expectedNameOfMenDropdown
+            + expectedNameOfWomenDropdown
+            + " of Clothes dropdown")
+        .contains(expectedNameOfMenDropdown,
+            expectedNameOfWomenDropdown);
 
-    List<String> actualNamesAccessoriesSubMenu = mainPage
+    List<String> actualNamesCategoriesAccessoriesSubMenu = mainPage
         .openMainPage()
         .getMainMenuBlock()
-        .hoverToAccessoriesButton()
+        .hoverToMainManuButton(MainMenuCategories.ACCESSORIES)
         .getNameOfAccessoriesSubMenu();
 
     // Check that 'STATIONERY' and 'HOME ACCESSORIES' sub menu items appears
-    softAssertions.assertThat(actualNamesAccessoriesSubMenu)
+    softAssertions.assertThat(actualNamesCategoriesAccessoriesSubMenu)
         .as("We expected categories "
-            + expectedNameOfStationeryDropdownSubMenu
-            + expectedNameOfHomeAccessoriesDropdownSubMenu
-            + " of Accessories dropdown SubMenu")
-        .contains(expectedNameOfStationeryDropdownSubMenu,
-            expectedNameOfHomeAccessoriesDropdownSubMenu);
+            + expectedNameOfStationeryDropdown
+            + expectedNameOfHomeAccessoriesDropdown
+            + " of Accessories dropdown")
+        .contains(expectedNameOfStationeryDropdown,
+            expectedNameOfHomeAccessoriesDropdown);
+
+    // Check that not any sub category appears
+    List<String> actualSizeCategoriesArtSubMenu = mainPage
+        .openMainPage()
+        .getMainMenuBlock()
+        .hoverToMainManuButton(MainMenuCategories.ART)
+        .getNameOfArtSubMenu();
+
+    softAssertions.assertThat(actualSizeCategoriesArtSubMenu)
+        .as("We expected size categories " + expectedSizeCategoriesOfArtSubMenu
+            + " of Art dropdown")
+        .hasSize(expectedSizeCategoriesOfArtSubMenu);
 
     softAssertions.assertAll();
   }

@@ -35,7 +35,6 @@ public class MainMenuBlock {
     switch (categories) {
       case CLOTHES:
         BasePage.hoverToButton(clothesButton);
-
         break;
       case ACCESSORIES:
         BasePage.hoverToButton(accessoriesButton);
@@ -49,30 +48,15 @@ public class MainMenuBlock {
     return this;
   }
 
-//  public MainMenuBlock hoverToClothesButton() {
-//    BasePage.hoverToButton(clothesButton);
-//    return this;
-//  }
-
   public List<String> getNameOfClothesSubMenu() {
-    return BasePage.getNameDropdownSubMenu(clothesContainer);
+    return BasePage.getNameDropdown(clothesContainer);
   }
-
-//  public MainMenuBlock hoverToAccessoriesButton() {
-//    BasePage.hoverToButton(accessoriesButton);
-//    return this;
-//  }
 
   public List<String> getNameOfAccessoriesSubMenu() {
-    return BasePage.getNameDropdownSubMenu(accessoriesContainer);
+    return BasePage.getNameDropdown(accessoriesContainer);
   }
 
-//  public MainMenuBlock hoverToArtButton() {
-//    BasePage.hoverToButton(artButton);
-//    return this;
-//  }
-
   public List<String> getNameOfArtSubMenu() {
-    return BasePage.getNameDropdownSubMenu(artContainer);
+    return BasePage.getNameDropdown(artContainer);
   }
 }

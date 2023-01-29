@@ -3,7 +3,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
-public class NewsLetterLabelTest extends BaseTest {
+public class Case1_NewsLetterLabelTest extends BaseTest {
 
   @Test
   public void checkInformationNearTheNewsLetterLabelTest() {

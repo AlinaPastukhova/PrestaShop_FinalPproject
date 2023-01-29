@@ -36,6 +36,4 @@ public class NewsLetterLabelBlock {
     String characters = driver.findElement(subscribeButton).getCssValue("text-transform");
     return characters;
   }
-
-
 }

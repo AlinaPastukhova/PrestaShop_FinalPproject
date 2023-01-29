@@ -54,14 +54,14 @@ Check that 8 products exist in 'POPULAR PRODUCTS' section
 Check that every product has name
 Check that every product has price
 Check that all prices bigger than 0.00
-Test case #7 (Price drop check)
 
+Test case #7 (Price drop check)
 Go to the https://demo.prestashop.com/
 At the bottom of the page click on 'Prices drop' link
 Check that every product has old and new price
 Check that promo price for every product calculates correct
-Test case #8 (Sorting check)
 
+Test case #8 (Sorting check)
 Go to the https://demo.prestashop.com/
 Click on the 'All products >' under the 'POPULAR PRODUCTS' section
 Sort products as 'Name, A to Z'
@@ -72,8 +72,8 @@ Sort products as 'Price, low to high'
 Check that sorting is correct
 Sort products as 'Price, high to low'
 Check that sorting is correct
-Test case #9 (Adding to cart)
 
+Test case #9 (Adding to cart)
 Go to the https://demo.prestashop.com/
 In the search field enter 'Bear' and press 'Enter'
 On the 'SEARCH RESULTS' page click on 'Brown Bear Notebook'

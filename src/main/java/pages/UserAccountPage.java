@@ -8,7 +8,7 @@ public class UserAccountPage extends BasePage {
 
   public String getUserName() {
     waitUntilVisible(userAccountButton, 10);
-    String name = BasePage.find(userAccountButton).getText();
+    String name = find(userAccountButton).getText();
     return name;
   }
 

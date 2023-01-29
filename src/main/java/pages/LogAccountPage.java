@@ -8,7 +8,7 @@ public class LogAccountPage extends BasePage {
 
   public RegisterAccountPage clickCreateAccountLink() {
     waitUntilVisible(createAccountLink, 10);
-    driver.findElement(createAccountLink).click();
+    find(createAccountLink).click();
     return new RegisterAccountPage();
   }
 

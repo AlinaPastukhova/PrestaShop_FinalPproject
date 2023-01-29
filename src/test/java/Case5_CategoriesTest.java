@@ -4,7 +4,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
-public class CategoriesTest extends BaseTest {
+public class Case5_CategoriesTest extends BaseTest {
 
   @Test
   public void checkCategoriesTest() {
@@ -26,12 +26,11 @@ public class CategoriesTest extends BaseTest {
 
     // Check that 'MEN' and 'WOMEN' sub menu items appears
     softAssertions.assertThat(actualNamesCategoriesClothesSubMenu)
-        .as("We expected categories "
+        .as("We expect categories "
             + expectedNameOfMenDropdown
             + expectedNameOfWomenDropdown
             + " of Clothes dropdown")
-        .contains(expectedNameOfMenDropdown,
-            expectedNameOfWomenDropdown);
+        .containsExactlyInAnyOrder(expectedNameOfMenDropdown, expectedNameOfWomenDropdown);
 
     List<String> actualNamesCategoriesAccessoriesSubMenu = mainPage
         .openMainPage()
@@ -41,11 +40,11 @@ public class CategoriesTest extends BaseTest {
 
     // Check that 'STATIONERY' and 'HOME ACCESSORIES' sub menu items appears
     softAssertions.assertThat(actualNamesCategoriesAccessoriesSubMenu)
-        .as("We expected categories "
+        .as("We expect categories "
             + expectedNameOfStationeryDropdown
             + expectedNameOfHomeAccessoriesDropdown
             + " of Accessories dropdown")
-        .contains(expectedNameOfStationeryDropdown,
+        .containsExactlyInAnyOrder(expectedNameOfStationeryDropdown,
             expectedNameOfHomeAccessoriesDropdown);
 
     // Check that not any sub category appears
@@ -56,7 +55,7 @@ public class CategoriesTest extends BaseTest {
         .getNameOfArtSubMenu();
 
     softAssertions.assertThat(actualSizeCategoriesArtSubMenu)
-        .as("We expected size categories " + expectedSizeCategoriesOfArtSubMenu
+        .as("We expect size categories " + expectedSizeCategoriesOfArtSubMenu
             + " of Art dropdown")
         .hasSize(expectedSizeCategoriesOfArtSubMenu);
 

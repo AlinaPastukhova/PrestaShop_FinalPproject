@@ -30,7 +30,7 @@ public abstract class BasePage {
     driver = webDriver;
   }
 
-  public BasePage(){
+  public BasePage() {
     actions = new Actions(getDriver());
   }
 
@@ -85,7 +85,7 @@ public abstract class BasePage {
     actions.moveToElement(element).build().perform();
   }
 
-  public static List<String> getNameDropdownSubMenu(By container) {
+  public static List<String> getNameDropdown(By container) {
     List<String> nameDropdownSubMenu = new ArrayList<>();
     List<WebElement> elements = driver.findElements(container);
     for (WebElement element : elements) {
@@ -94,5 +94,6 @@ public abstract class BasePage {
     }
     return nameDropdownSubMenu;
   }
+
 
 }

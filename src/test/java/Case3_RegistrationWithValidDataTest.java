@@ -3,7 +3,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
-public class RegistrationWithValidDataTest extends BaseTest {
+public class Case3_RegistrationWithValidDataTest extends BaseTest {
 
   Faker faker = new Faker();
 
@@ -41,7 +41,7 @@ public class RegistrationWithValidDataTest extends BaseTest {
 
     // Check your name appear near cart button
     softAssertions.assertThat(actualUserName)
-        .as("Expected Name " + expectedUserName + " after registration account")
+        .as("Expect Name " + expectedUserName + " after registration account")
         .isEqualTo(actualUserName);
 
     softAssertions.assertAll();

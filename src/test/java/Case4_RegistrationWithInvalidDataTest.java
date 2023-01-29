@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pages.MainPage;
 import pages.RegisterAccountPage;
 
-public class RegistrationWithInvalidDataTest extends BaseTest {
+public class Case4_RegistrationWithInvalidDataTest extends BaseTest {
 
   Faker faker = new Faker();
 
@@ -19,8 +19,9 @@ public class RegistrationWithInvalidDataTest extends BaseTest {
   public void checkRegistrationWithInvalidDataTest() {
 
     MainPage mainPage = new MainPage();
-    SoftAssertions softAssertions = new SoftAssertions();
     RegisterAccountPage registerAccountPage = new RegisterAccountPage();
+
+    SoftAssertions softAssertions = new SoftAssertions();
 
     // "rgba(255, 76, 76, 1)" = red color
     String expectedHighlightedWhenError = "rgba(255, 76, 76, 1)";
@@ -47,7 +48,7 @@ public class RegistrationWithInvalidDataTest extends BaseTest {
     String actualHighlightedWhenError = registerAccountPage.getHighlightedColorWhenError();
 
     softAssertions.assertThat(actualHighlightedWhenError)
-        .as("Expected that 'First name' highlighted in " + expectedHighlightedWhenError
+        .as("Expect that 'First name' highlighted in " + expectedHighlightedWhenError
             + " when error in the field")
         .isEqualTo(expectedHighlightedWhenError);
 
@@ -55,7 +56,7 @@ public class RegistrationWithInvalidDataTest extends BaseTest {
     List<String> actualTextUnderErrorField = registerAccountPage.getTextUnderFieldWithError();
 
     softAssertions.assertThat(actualTextUnderErrorField)
-        .as("Expected text under error field " + expectedTextUnderErrorField)
+        .as("Expect text under error field " + expectedTextUnderErrorField)
         .isEqualTo(expectedTextUnderErrorField);
 
     softAssertions.assertAll();

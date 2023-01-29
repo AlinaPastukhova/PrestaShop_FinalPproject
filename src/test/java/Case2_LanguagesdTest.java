@@ -4,7 +4,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
-public class LanguagesdTest extends BaseTest {
+public class Case2_LanguagesdTest extends BaseTest {
 
   @Test
   public void checkLanguagesdTest() {
@@ -15,7 +15,8 @@ public class LanguagesdTest extends BaseTest {
     int expectedSizeLanguagesInSelectDropdown = 44;
     String expectedNamesOfLanguagesOnSelectDropdown = "Українська";
 
-    List<String> actualLanguagesInSelectDropdown = mainPage.openMainPage()
+    List<String> actualLanguagesInSelectDropdown = mainPage
+        .openMainPage()
         .getTopMenuBlock()
         .clickLanguageSelectorButton()
         .getNamesOfLanguages();
